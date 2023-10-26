@@ -13,6 +13,12 @@ namespace NsgArmMarkdownGenerator
             Log.Logger = new LoggerConfiguration()
                         .WriteTo.Console()
                         .CreateLogger();
+            Log.Information("--------------------------------------------------");
+            Log.Information("Markdown NSG ARM Template Generator");
+            Log.Information("Developed by uptec.io (Mirza Ghulam Rasyid)");
+            Log.Information("--------------------------------------------------\n");
+
+
             string inputFileLocation = "";
             string outputFileLocation = "";
             List<string> parserErrors = new List<string>();
