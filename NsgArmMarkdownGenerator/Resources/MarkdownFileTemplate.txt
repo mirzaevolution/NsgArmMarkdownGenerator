@@ -1,0 +1,20 @@
+
+# Azure Network Security Group
+
+### Name:  @@NSG_NAME@@
+
+### NSG Rules (@@TOTAL@@ items):
+| Priority |Name|Protocol|Src Ports|Src Addresses|Dest Ports|Dest Addresses|Direction|Action|
+|--|--|--|--|--|--|--|--|--|
+@@ROW@@
+
+
+## Snippets
+
+### Raw Nsg Rules
+
+```json
+@@JSON_NSG_RULES@@
+```
+
+##### NSG ARM Template Markdown Generator. Developed by [Uptec.io](https://uptec.io/).

@@ -1,10 +1,58 @@
-﻿namespace NsgArmMarkdownGenerator
+﻿using CommandLine;
+using NsgArmMarkdownGenerator.Helpers;
+using NsgArmMarkdownGenerator.Models;
+using Serilog;
+using System.Text.Json;
+
+namespace NsgArmMarkdownGenerator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Log.Logger = new LoggerConfiguration()
+                        .WriteTo.Console()
+                        .CreateLogger();
+            string inputFileLocation = "";
+            string outputFileLocation = "";
+            List<string> parserErrors = new List<string>();
+            Parser.Default.ParseArguments<CommandParser>(args)
+                .WithParsed<CommandParser>(o =>
+                {
+                    if (!string.IsNullOrEmpty(o.InputFile))
+                    {
+                        inputFileLocation = o.InputFile.Trim();
+                        if (!File.Exists(inputFileLocation))
+                        {
+                            parserErrors.Add($"File input: '{inputFileLocation}' not found");
+                            Log.Error($"File input: '{inputFileLocation}' not found");
+                        }
+                    }
+                    else
+                    {
+                        parserErrors.Add("'--input-file' parameter is required!");
+                        Log.Error("'--input-file' parameter is required!");
+                    }
+
+                    if (!string.IsNullOrEmpty(o.OutputFile))
+                    {
+                        outputFileLocation = o.OutputFile.Trim();
+                    }
+                    else
+                    {
+                        parserErrors.Add("'--output-file' parameter is required!");
+                        Log.Error("'--output-file' parameter is required!");
+                    }
+                });
+            if (parserErrors.Count > 0)
+            {
+                throw new Exception(JsonSerializer.Serialize(parserErrors));
+            }
+            else
+            {
+                new MarkdownGeneratorHelper(inputFileLocation, outputFileLocation)
+                    .GenerateMarkdown();
+            }
         }
     }
 }
