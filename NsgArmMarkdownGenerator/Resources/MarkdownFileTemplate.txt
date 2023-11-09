@@ -3,10 +3,27 @@
 
 ### Name:  @@NSG_NAME@@
 
-### NSG Rules (@@TOTAL@@ items):
+#### PR Histories
+
+List of pull request histories made related to this file.
+
+|Pull Request ID|Title|Created Date|
+|--|--|--|
+@@ROW_PR@@
+
+### Total NSG Rules: @@TOTAL_ALL@@
+
+#### NSG Rules Inbound (@@TOTAL_INBOUND@@ items):
 | Priority |Name|Protocol|Src Ports|Src Addresses|Dest Ports|Dest Addresses|Direction|Action|
 |--|--|--|--|--|--|--|--|--|
-@@ROW@@
+@@ROW_INBOUND@@
+
+
+#### NSG Rules Outbound (@@TOTAL_OUTBOUND@@ items):
+| Priority |Name|Protocol|Src Ports|Src Addresses|Dest Ports|Dest Addresses|Direction|Action|
+|--|--|--|--|--|--|--|--|--|
+@@ROW_OUTBOUND@@
+
 
 
 ## Snippets

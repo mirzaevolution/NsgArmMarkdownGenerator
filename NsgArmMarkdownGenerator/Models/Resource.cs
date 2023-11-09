@@ -8,7 +8,7 @@ namespace NsgArmMarkdownGenerator.Models
         public string? Type { get; set; }
 
         [JsonProperty("apiVersion")]
-        public DateTimeOffset? ApiVersion { get; set; }
+        public string? ApiVersion { get; set; }
 
         [JsonProperty("name")]
         public string? Name { get; set; }

@@ -19,8 +19,9 @@ namespace NsgArmMarkdownGenerator
             Log.Information("--------------------------------------------------\n");
 
 
-            string inputFileLocation = "";
-            string outputFileLocation = "";
+            string inputFileLocation = string.Empty;
+            string prJsonFileLocation = string.Empty;
+            string outputFileLocation = string.Empty;
             List<string> parserErrors = new List<string>();
             Parser.Default.ParseArguments<CommandParser>(args)
                 .WithParsed<CommandParser>(o =>
@@ -40,6 +41,21 @@ namespace NsgArmMarkdownGenerator
                         Log.Error("'--input-file' parameter is required!");
                     }
 
+                    if (!string.IsNullOrEmpty(o.PrJsonFile))
+                    {
+                        prJsonFileLocation = o.PrJsonFile.Trim();
+                        if (!File.Exists(prJsonFileLocation))
+                        {
+                            parserErrors.Add($"Pr Json File: '{prJsonFileLocation}' not found");
+                            Log.Error($"Pr Json File: '{prJsonFileLocation}' not found");
+                        }
+                    }
+                    else
+                    {
+                        parserErrors.Add("'--pr-json-file' parameter is required!");
+                        Log.Error("'--pr-json-file' parameter is required!");
+                    }
+
                     if (!string.IsNullOrEmpty(o.OutputFile))
                     {
                         outputFileLocation = o.OutputFile.Trim();
@@ -56,7 +72,7 @@ namespace NsgArmMarkdownGenerator
             }
             else
             {
-                new MarkdownGeneratorHelper(inputFileLocation, outputFileLocation)
+                new MarkdownGeneratorHelper(inputFileLocation, prJsonFileLocation, outputFileLocation)
                     .GenerateMarkdown();
             }
         }
