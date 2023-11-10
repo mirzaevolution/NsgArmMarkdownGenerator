@@ -19,6 +19,11 @@ namespace NsgArmMarkdownGenerator.Models
         [JsonProperty("pullRequestLink", NullValueHandling = NullValueHandling.Ignore)]
         public string? PullRequestLink { get; set; }
 
+
+        [JsonProperty("createdBy", NullValueHandling = NullValueHandling.Ignore)]
+        public string? CreatedBy { get; set; }
+
+
         [JsonProperty("createdDate")]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }

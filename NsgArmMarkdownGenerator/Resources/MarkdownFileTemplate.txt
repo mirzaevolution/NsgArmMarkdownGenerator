@@ -7,8 +7,8 @@
 
 List of pull request histories made related to this file.
 
-|Pull Request ID|Title|Created Date|
-|--|--|--|
+|Pull Request ID|Title|Created By|Created Date|
+|--|--|--|--|
 @@ROW_PR@@
 
 ### Total NSG Rules: @@TOTAL_ALL@@

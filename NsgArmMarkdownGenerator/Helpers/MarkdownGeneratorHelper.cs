@@ -204,15 +204,16 @@ namespace NsgArmMarkdownGenerator.Helpers
             {
                 string pullRequestId = $"|{item.PullRequestId}";
                 string title = $"|[{item.Title}]({item.PullRequestLink})";
+                string createdBy = $"|{item.CreatedBy}";
                 string createdDate = $"|{item.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss")}|";
 
-                stringBuilder.AppendLine($"{pullRequestId}{title}{createdDate}");
+                stringBuilder.AppendLine($"{pullRequestId}{title}{createdBy}{createdDate}");
             }
         }
 
         private void BuildEmptyPrHistories(StringBuilder stringBuilder)
         {
-            stringBuilder.AppendLine("|n/a|n/a|n/a|");
+            stringBuilder.AppendLine("|n/a|n/a|n/a|n/a|");
 
         }
 
