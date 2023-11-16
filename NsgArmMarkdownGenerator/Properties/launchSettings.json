@@ -1,7 +1,8 @@
 {
   "profiles": {
     "NsgArmMarkdownGenerator": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "--input-file D:\\2021\\Downloads\\Chrome\\ExportedTemplate-test-rg-2\\test\\mytest.json --pr-json-file D:\\2021\\Downloads\\Chrome\\ExportedTemplate-test-rg-2\\test\\prHistories.txt --output-file  D:\\2021\\Downloads\\Chrome\\ExportedTemplate-test-rg-2\\test\\mytest.md"
     }
   }
 }

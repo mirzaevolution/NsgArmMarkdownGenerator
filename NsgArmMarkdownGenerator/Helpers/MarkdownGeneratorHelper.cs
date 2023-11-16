@@ -50,8 +50,7 @@ namespace NsgArmMarkdownGenerator.Helpers
 
                 if (resource != null &&
                     resource.Properties != null &&
-                    resource.Properties.SecurityRules != null &&
-                    totalNsgRules > 0)
+                    resource.Properties.SecurityRules != null)
                 {
                     var nsgRules = resource.Properties.SecurityRules;
                     StringBuilder inboundNsgRuleSb = new StringBuilder();

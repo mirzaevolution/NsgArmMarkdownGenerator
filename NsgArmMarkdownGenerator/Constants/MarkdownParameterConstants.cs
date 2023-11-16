@@ -14,7 +14,7 @@
         public const string NsgRowPullRequest = "@@ROW_PR@@";
 
 
-        public const string NsgJsonRules = "@@JSON_NSG_RULES@";
+        public const string NsgJsonRules = "@@JSON_NSG_RULES@@";
 
     }
 }
